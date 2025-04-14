@@ -56,8 +56,20 @@ def bubble_sort(number_array):
             if number_array[num_idx] > number_array[num_idx+ 1]:
                 number_array[num_idx], number_array[num_idx + 1] = number_array[num_idx + 1], number_array[num_idx]
     return number_array
-
-
+def insertion_sort(number_array):
+    """
+    :param number_array: list with numeric array
+    :return: sorted numeric array
+    """
+    n = len(number_array)
+    for i in range(1, n):
+        key = number_array[i]
+        j = i -1
+        while j>= 0 and number_array[j]> key:
+            number_array[j + 1] = number_array[j]
+            j = j-1
+        number_array[j + 1] = key
+    return number_array
 
 def main():
     data = read_data("numbers.csv")
@@ -66,7 +78,10 @@ def main():
     print(sort)
     sort = bubble_sort(data['series_2'])
     print(sort)
+    sort = insertion_sort(data['series_3'])
+    print(sort)
     pass
+
 
 
 if __name__ == '__main__':
